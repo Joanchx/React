@@ -1,5 +1,6 @@
 const config = {
-    prefix: '/blog'
+    //路由前缀
+    prefix: '/base'
 };
 
 export default config;

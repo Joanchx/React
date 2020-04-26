@@ -1,30 +1,35 @@
-import config from '../../config';
+import { lazy } from 'react';
 
-import Layout from '../../layout';
-import Home from '../../pages/home';
+import config from '../../config';
 
 const prefix = config.prefix;
 
 const routeConfig = [
-    {
-        tag: 'Redirect',
-        from: '/',
-        to: `${prefix}`,
-        exact: true
-    },
-    {
-        tag: 'Route',
-        path: `${prefix}`,
-        component: Layout,
-        routes: [
-            {
-                name: '首页',
-                tag: 'Route',
-                path: `${prefix}/home`,
-                component: Home
-            }
-        ]
-    }
+	{
+		tag: 'Redirect',
+		from: '/',
+		to: `/login`,
+		exact: true,
+	},
+	{
+		tag: 'Route',
+		path: `/login`,
+		component: lazy(() => import('../../pages/login')),
+		exact: true,
+	},
+	{
+		tag: 'Route',
+		path: `${prefix}`,
+		component: lazy(() => import('../../layout')),
+		routes: [
+			{
+				name: '首页',
+				tag: 'Route',
+				path: `${prefix}/home`,
+				component: lazy(() => import('../../pages/home')),
+			},
+		],
+	},
 ];
 
 export default routeConfig;

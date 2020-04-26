@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{Suspense}from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import IRouteConfig from '../interface';
@@ -18,13 +18,14 @@ const SmartRouter = (route: IRouteConfig) => {
 };
 
 const Routes = (props: any) => {
-    console.log('props',props)
     return (
-        <Switch>
-            {props.routes.map((route: IRouteConfig, i: number) => (
-                <SmartRouter key={i} {...route} />
-            ))}
-        </Switch>
+        <Suspense fallback={<div>loading...</div>}>
+            <Switch>
+                {props.routes.map((route: IRouteConfig, i: number) => (
+                    <SmartRouter key={i} {...route} />
+                ))}
+            </Switch>
+        </Suspense>
     );
 };
 
