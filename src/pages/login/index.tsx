@@ -16,7 +16,7 @@ const Login = (props: any) => {
 
 	const onFinish = (values: ILoginForm) => {
 		console.log(values);
-		props.history.push(`${prefix}/home`);
+		props.history.push(`${prefix}`);
 	};
 
 	return (

@@ -1,6 +1,6 @@
-### project introduce
+### Project Introduce
 
-### Base Framework
+#### Base Framework
 
 ```
 git clone https://github.com/Joanchx/React.git
